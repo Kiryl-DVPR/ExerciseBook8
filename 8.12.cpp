@@ -50,7 +50,12 @@ int ftype(int move, int type)
         }   
             if (type <=7 && type >=6)
             {
-                 move = move-6;
+                move = move-6;
+                if (move < 0)
+                {
+                    move = 0;
+                }
+                
             }
 
     
