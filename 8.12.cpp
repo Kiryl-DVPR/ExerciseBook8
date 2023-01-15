@@ -1,34 +1,42 @@
 #include <iostream>
 #include <string>     
 
-int ftype(int, int);
+int ftypeTurtels(int, int);
+int ftypeHare(int, int);
 
 int main()
 {
     int const SizeArray = 70;
 
-    char Array[SizeArray] = {0};
+    char ArrayT[SizeArray] = {0};
+    char ArrayH[SizeArray] = {0};
 
-    int move=0;
+    int moveT=0;
+    int moveH=0;
     int type=0;
 
-    while (move != SizeArray )
+    while (moveT != SizeArray )
     {
         
-        move = ftype(move, type);
+        moveT = ftypeTurtels(moveT, type);
+        moveH = ftypeHare(moveH, type);
 
-        Array[move] = 450;
+        ArrayT[moveT] = 450;
+        ArrayH[moveH] = 72;
         
         for (int i = 0; i < SizeArray; i++)
         {
 
-            std::cout << Array[i] << " ";
+            std::cout << ArrayT[i] << " ";
+            std::cout << ArrayH[i] << " ";
         
         }
 
-        Array[move] = 0;
+        ArrayT[moveT] = 0;
+        ArrayH[moveH] = 0;
 
-        move++;
+        moveT++;
+        moveH++;
 
         std::cout << std::endl;
 
@@ -38,27 +46,54 @@ int main()
     
 }
 
-int ftype(int move, int type)
+int ftypeTurtels(int moveT, int type)
 {
     if (type <= 5)
     {
-        move = move +3;
+        moveT = moveT +3;
     }
         if (type <=10 && type >=8)
         {
-            move = move + 1;
+            moveT = moveT + 1;
         }   
             if (type <=7 && type >=6)
             {
-                move = move-6;
-                if (move < 0)
+                moveT = moveT-6;
+                if (moveT < 0)
                 {
-                    move = 0;
+                    moveT = 0;
                 }
                 
             }
 
     
-    return move;
+    return moveT;
     
+}
+
+int ftypeHare(int moveH, int type)
+{
+    if ( type <=2 )
+    {
+        moveH = moveH + 0;
+    }
+    if ( type <= 4 && type > 2 )
+    {
+        moveH = moveH + 9;
+    }
+    if ( type == 5 )
+    {
+        moveH = moveH - 12;
+    }
+    if ( type >= 6 && type <= 8 )
+    {
+        moveH = moveH + 1;
+    }
+    if ( type >= 9 )
+    {
+        moveH = moveH - 2;
+    }
+
+    return moveH;
+
 }
