@@ -15,22 +15,29 @@ int main()
     int moveH=0;
     int type=0;
 
-    while (moveT != SizeArray )
+    while (moveT != SizeArray && moveH != SizeArray)
     {
-        
-        moveT = ftypeTurtels(moveT, type);
-        moveH = ftypeHare(moveH, type);
 
         ArrayT[moveT] = 450;
         ArrayH[moveH] = 72;
         
         for (int i = 0; i < SizeArray; i++)
         {
-
             std::cout << ArrayT[i] << " ";
-            std::cout << ArrayH[i] << " ";
-        
         }
+
+        std::cout << std::endl;
+
+        for (int a = 0; a < SizeArray; a++)
+        {
+            std::cout << ArrayH[a] << " ";
+        }
+
+        if (moveT == moveH)
+        {
+            std::cout << std::endl << "Ouch!!!" ;
+        }
+        
 
         ArrayT[moveT] = 0;
         ArrayH[moveH] = 0;
@@ -41,6 +48,9 @@ int main()
         std::cout << std::endl;
 
         type = rand()%9+2;
+
+        moveT = ftypeTurtels(moveT, type);
+        moveH = ftypeHare(moveH, type);
     }
     
     
