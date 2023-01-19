@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>     
 
-int ftypeTurtels(int, int);
-int ftypeHare(int, int);
+void ftypeTurtels(int *, int);
+void ftypeHare(int *, int);
 
 int main()
 {
@@ -12,14 +12,18 @@ int main()
     char ArrayH[SizeArray] = {0};
 
     int moveT=0;
+    int *PtrmoveT = &moveT;
+
     int moveH=0;
+    int *PtrmoveH = &moveH;
+
     int type=0;
 
-    while (moveT != SizeArray && moveH != SizeArray)
+    while (*PtrmoveT != SizeArray && *PtrmoveH != SizeArray)
     {
 
-        ArrayT[moveT] = 450;
-        ArrayH[moveH] = 72;
+        ArrayT[*PtrmoveT] = 450;
+        ArrayH[*PtrmoveH] = 72;
         
         for (int i = 0; i < SizeArray; i++)
         {
@@ -33,77 +37,72 @@ int main()
             std::cout << ArrayH[a] << " ";
         }
 
-        if (moveT == moveH)
+        if (*PtrmoveT == *PtrmoveH)
         {
             std::cout << std::endl << "Ouch!!!" ;
         }
         
 
-        ArrayT[moveT] = 0;
-        ArrayH[moveH] = 0;
+        ArrayT[*PtrmoveT] = 0;
+        ArrayH[*PtrmoveH] = 0;
 
-        moveT++;
-        moveH++;
+        *PtrmoveT++;
+        *PtrmoveH++;
 
         std::cout << std::endl;
 
         type = rand()%9+2;
 
-        moveT = ftypeTurtels(moveT, type);
-        moveH = ftypeHare(moveH, type);
+        ftypeTurtels(PtrmoveT, type);
+        ftypeHare(PtrmoveH, type);
     }
     
     
 }
 
-int ftypeTurtels(int moveT, int type)
+void ftypeTurtels(int *PtrmoveT, int type)
 {
     if (type <= 5)
     {
-        moveT = moveT +3;
+        *PtrmoveT = *PtrmoveT +3;
     }
         if (type <=10 && type >=8)
         {
-            moveT = moveT + 1;
+            *PtrmoveT = *PtrmoveT + 1;
         }   
             if (type <=7 && type >=6)
             {
-                moveT = moveT-6;
-                if (moveT < 0)
+                *PtrmoveT = *PtrmoveT-6;
+                if (*PtrmoveT < 0)
                 {
-                    moveT = 0;
+                    *PtrmoveT = 0;
                 }
                 
             }
 
-    
-    return moveT;
-    
 }
 
-int ftypeHare(int moveH, int type)
+void ftypeHare(int *PtrmoveH, int type)
 {
     if ( type <=2 )
     {
-        moveH = moveH + 0;
+        *PtrmoveH = *PtrmoveH + 0;
     }
     if ( type <= 4 && type > 2 )
     {
-        moveH = moveH + 9;
+        *PtrmoveH = *PtrmoveH + 9;
     }
     if ( type == 5 )
     {
-        moveH = moveH - 12;
+        *PtrmoveH = *PtrmoveH - 12;
     }
     if ( type >= 6 && type <= 8 )
     {
-        moveH = moveH + 1;
+        *PtrmoveH = *PtrmoveH + 1;
     }
     if ( type >= 9 )
     {
-        moveH = moveH - 2;
+        *PtrmoveH = *PtrmoveH - 2;
     }
-
-    return moveH;
 
 }
