@@ -22,8 +22,8 @@ int main()
     while (*PtrmoveT != SizeArray && *PtrmoveH != SizeArray)
     {
 
-        ArrayT[*PtrmoveT] = 450;
-        ArrayH[*PtrmoveH] = 72;
+        ArrayT[moveT] = 450;
+        ArrayH[moveH] = 72;
         
         for (int i = 0; i < SizeArray; i++)
         {
@@ -43,11 +43,11 @@ int main()
         }
         
 
-        ArrayT[*PtrmoveT] = 0;
-        ArrayH[*PtrmoveH] = 0;
+        ArrayT[moveT] = 0;
+        ArrayH[moveH] = 0;
 
-        *PtrmoveT++;
-        *PtrmoveH++;
+        ++*PtrmoveT;
+        ++*PtrmoveH;
 
         std::cout << std::endl;
 
